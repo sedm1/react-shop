@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../assets/sass/productsCard.sass'
+import './sass/productsCard.sass'
 
 export default function ProductsCard({ productsItem, AddToFavourite, favourited}){
     const [inFav, setInFav] = useState(favourited)
