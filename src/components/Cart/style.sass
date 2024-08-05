@@ -1,0 +1,32 @@
+.cart
+    &__bg
+        background: rgba(0, 0, 0, 0.4)
+        width: 100%
+        height: 100vh
+        position: fixed
+        top: 0
+        left: 0
+        z-index: 5
+        display: none
+        justify-content: flex-end
+        opacity: 0
+        transition: .3s
+        &-preactive 
+            display: flex
+        &-active 
+            opacity: 1
+    &__window
+        max-width: 385px
+        width: 100%
+        box-shadow: -10px 4px 24px 0px rgba(0, 0, 0, 0.1)
+        background: #fff
+        padding: 32px 30px
+        display: none
+        flex-direction: column
+        justify-content: space-between
+        opacity: 0
+        transition: .3s
+        &-preactive 
+            display: flex
+        &-active 
+            opacity: 1

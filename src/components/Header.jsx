@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 
 import '../assets/sass/header.sass'
+import { useEffect, useState } from 'react'
 
 export default function Header(){
+    let [price, setPrice] = useState(0)
+
+
     return (
         <header>
             <div className="container">
@@ -14,9 +18,11 @@ export default function Header(){
                     </div>
                 </Link>
                 <div className="header__info">
-                    <div className="header__info-item">
+                    <div className="header__info-item" onClick={() => {
+                        
+                    }}>
                         <div className="header__info-icon"><img src="img/icons/cart.svg" alt="CartIcon" /></div>
-                        <p className='header__info-title'>0 руб.</p>
+                        <p className='header__info-title'>{price} руб.</p>
                     </div>
                     <Link className="header__info-item" to='/favourite'>
                         <div className="header__info-icon"><img src="img/icons/favourite.svg" alt="Favicon" /></div>

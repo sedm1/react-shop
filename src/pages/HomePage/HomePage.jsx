@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { ToastContainer } from 'react-toastify';
 
-import Header from '../../components/Header'
 
 import ProductsBlock from '../../components/Products/ProductsBlock';
 
@@ -27,8 +25,6 @@ export default function HomePage() {
   
   return (
     <>
-      <Header/>
-      <ToastContainer />
       <main>
         <section className="products">
           <div className="container">

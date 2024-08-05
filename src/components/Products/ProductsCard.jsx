@@ -5,7 +5,7 @@ export default function ProductsCard({ productsItem, AddToFavourite, favourited}
     const [inFav, setInFav] = useState(favourited)
     const onAddToFavourite = () => {
         setInFav(!inFav)
-        AddToFavourite(productsItem.id)
+        AddToFavourite(productsItem)
     }
     
     
