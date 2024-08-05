@@ -8,10 +8,16 @@ import ProductsBlock from "../../components/Products/ProductsBlock";
 import './favourite.sass'
 
 
+
+
+
 export default function Favourite(){
     const favouriteProductsList = localStorage.getItem('Favourites') ? JSON.parse(localStorage.getItem('Favourites')) : []
-    const [products, setproducts] = useState([])
-    function favouriteProducts(){
+    const [products, setProducts] = useState([])
+    const [favouriteProducts, setFavouriteProducts] = useState([])
+
+
+    function GetProductsFromApi(){
         try {
             const products = async () => {
                 const data = await axios('https://66ae2dafb18f3614e3b6f725.mockapi.io/items')
@@ -19,17 +25,27 @@ export default function Favourite(){
             }
             products()
             .then((data) => {
-                const res = data.filter((item) => favouriteProductsList.indexOf(item.id) !== -1)
-                setproducts(res) 
+                setProducts(data)
             })
         } catch(err){
             console.log('Ошибка при получении избранного товара: ' + err)
         }
     }
 
+    function filterFavouriteProducts(data){
+        const res = data.filter((item) => favouriteProductsList.indexOf(item.id) !== -1)
+        setFavouriteProducts(res)
+    }
+
     useEffect(() => {
-        favouriteProducts()
-    }, [products])
+        GetProductsFromApi()
+    }, [])
+
+    useEffect(() => {
+        filterFavouriteProducts(products)
+    }, [favouriteProducts])
+
+    
 
     return(
         <>
@@ -39,8 +55,8 @@ export default function Favourite(){
                 <section className="main">
                     <div className="container">
                         <h2 className="section__title">Мои закладки</h2>
-                        {products.length ? (
-                            <ProductsBlock products={products}/>
+                        {favouriteProducts.length ? (
+                            <ProductsBlock products={favouriteProducts}/>
                         ) : (
                             <div className="main__null">
                                 <div className="main__null-icon"><img src="img/icons/notFound.svg" alt="NotFoundIcon" /></div>
